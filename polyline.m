@@ -468,7 +468,21 @@ methods
 		ix.plot(ax,'MarkerFaceColor',[0 0 0],'MarkerEdgeColor',[0 0 0],...
 		    				'MarkerSize',4,'Marker','o','LineStyle','none');
 		set(ax,'Ylim',[0 10]);
-	end
+    end
+    function write(obj,fname)
+        % writes all polylines to disk
+        s = size(obj);
+        id = s(1); T = s(2);
+        for ii = 1:id
+            for it = 1:T
+                str = sprintf('%s_%d_%d.csv',fname,ii,it);
+                d = [obj(ii,it).x; obj(ii,it).y];
+                dlmwrite(str, d, 'delimiter', ',', 'precision', 8)
+
+            end
+        end
+    end
+   
 end %methods
 end %of classdef
 
