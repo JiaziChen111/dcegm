@@ -7,6 +7,8 @@ clear
 clear classes % update classes in the memory
 addpath('utils');
 
+fprintf('Hi! This is Matlab version %s running on my laptop\n',version())
+
 %% Nice simulation graphics using retirement model
 m5=model_retirement;
 m5.ngridm=500;
@@ -22,6 +24,7 @@ fprintf('Retirement model solved with\n %d asset points\n %d periods at \n %.7f 
 % save output
 m5.policy.write('output/policy')
 m5.value.write('output/value')
+fprintf('wrote policy and value function to ascii in output/ . exiting matlab.')
 % 
 % 
 % m5.plot('policy');
